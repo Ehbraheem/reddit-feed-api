@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "reddit-feed-api"
+version = "0.1.0"
+description = ""
+authors = ["Ehbraheem <ehbraheem@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.67.0"
+sqlalchemy = "^2.0.0"
+gunicorn = "^20.0.4"
+psycopg2 = "^2.9.1"
+alembic = "^1.5.8"
+tenacity = "^7.0.0"
+requests = "^2.23.0"
+pydantic = {version = "^1.8.2", extras = ["dotenv"]}
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pytest-cov = "^2.10.1"
+autoflake = "^1.4"
+flake8 = "^3.8.4"
+mypy = "^0.790"
+isort = "^5.0"
+pre-commit = "^2.8.2"
+black = "^20.8b1"
+factory_boy = "^3.1.0"
+Faker = "^8.0.0"
+sqlalchemy-stubs = "^0.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app"
